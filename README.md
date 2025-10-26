@@ -1,21 +1,32 @@
-## RESNET — New UI
-
-Modern React + Vite interface for discovering and reading news with dedicated desktop and mobile experiences.
-
-### Access the app
-
 <p align="center">
-  <a href="https://newui.resnet.in">
-    <img alt="Live: newui.resnet.in" src="https://img.shields.io/badge/Live-newui.resnet.in-2ea44f?style=for-the-badge" />
-  </a>
+  <img src="space-shuttle.png" alt="RESNET UI" width="96" />
+  <h2 align="center" style="margin-top:4px;">RESNET — New UI</h2>
+  <p align="center">Fast, clean news reading experience with desktop and mobile layouts.</p>
+  <a href="https://newui.resnet.in"><img alt="Live: newui.resnet.in" src="https://img.shields.io/badge/Live-newui.resnet.in-2ea44f?style=for-the-badge" /></a>
   <br/>
   <sub>Click the badge to open the app</sub>
-  <br/><br/>
 </p>
+
+### Table of contents
+- [Features](#features)
+- [UI gallery](#ui-gallery)
+- [Quick start](#quick-start)
+- [Tech stack](#tech-stack)
+- [Scripts](#scripts)
+- [Project structure](#project-structure)
+
+### Features
+- Clean, distraction‑free reader with cards and summaries
+- Dedicated mobile and desktop experiences
+- Search, chains (company‑only news), comments, dark mode
+- Fast image proxy and caching for snappy loads
 
 ### UI gallery
 
-<p align="center">
+<details open>
+<summary><b>Open preview</b></summary>
+
+<p align="center" style="margin-top:8px;">
   <b>Desktop — Home</b><br/>
   <img src="public/ui-images/image.png" alt="Desktop Home" width="1200" />
 </p>
@@ -54,6 +65,22 @@ Modern React + Vite interface for discovering and reading news with dedicated de
   </tr>
   
 </table>
+
+</details>
+
+### Quick start
+
+```bash
+# install deps
+npm install
+
+# run the unified dev server (API + Vite SPA)
+npm run dev
+
+# production build and preview
+npm run build
+npm run preview
+```
 
 ### Tech stack
 - **React + Vite** for fast dev/build
