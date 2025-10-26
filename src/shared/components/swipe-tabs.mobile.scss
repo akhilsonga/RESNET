@@ -1,0 +1,35 @@
+.swipe-tabs { }
+
+.tab-bar {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	position: relative;
+	gap: 8px;
+	padding: 8px 8px 4px 8px;
+}
+
+.tab {
+	padding: 8px 10px;
+	background: var(--chip);
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	font-weight: 700;
+	font-size: 12px;
+}
+
+.tab.active { color: #ffffff; background: var(--accent); border-color: transparent; }
+
+.indicator {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 3px;
+	width: calc(100% / 3);
+	background: transparent; /* hidden; we now color the active tab */
+	border-radius: 2px;
+	transition: transform .2s ease;
+}
+
+.panels { overflow: hidden; touch-action: pan-y; }
+.track { display: grid; grid-template-columns: repeat(3, 100%); transition: transform .2s ease; }
+.panel { padding: 10px 8px 24px 8px; min-height: 40vh; } 

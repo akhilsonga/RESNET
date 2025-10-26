@@ -1,0 +1,62 @@
+.m-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 6px;
+	position: sticky;
+	top: 0;
+	background: var(--surface-veil);
+	backdrop-filter: saturate(1.2) blur(8px);
+	z-index: 10;
+}
+
+.m-header h1 {
+	margin: 0;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.icon-btn {
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	width: 36px;
+	height: 36px;
+	display: grid;
+	place-items: center;
+	box-shadow: var(--shadow);
+}
+
+.actions { display: flex; gap: 8px; }
+
+.icon-btn:hover { transform: translateY(-1px); }
+
+/* Left group with avatar */
+.m-header .left { display: flex; align-items: center; gap: 8px; }
+.m-header .avatar { width: 36px; height: 36px; border-radius: 12px; background-color: var(--card); background-size: contain; background-repeat: no-repeat; background-position: center; border: 1px solid var(--border); box-shadow: var(--shadow); }
+
+/* Settings trigger */
+.settings-wrap { position: relative; }
+
+/* Dark mode: ensure header icons render white */
+[data-theme='dark'] .m-header .icon-btn {
+	color: #ffffff;
+	border-color: rgba(255,255,255,0.25);
+	background: transparent;
+}
+
+.toast {
+	position: fixed; left: 50%; transform: translateX(-50%);
+	bottom: 16px; z-index: 1000;
+	background: color-mix(in srgb, var(--card) 92%, transparent);
+	backdrop-filter: blur(12px);
+	border: 1px solid var(--border);
+	box-shadow: var(--shadow);
+	color: var(--text);
+	padding: 10px 14px; border-radius: 12px;
+	font-weight: 600; font-size: 14px;
+}
+
+/* Subtle pulse for mobile login */
+.pulse-login { animation: loginPulse 3s infinite; }
+@keyframes loginPulse { 0% { filter: brightness(1); box-shadow: none; } 50% { filter: brightness(1.08); box-shadow: 0 0 0 6px color-mix(in srgb, var(--primary) 15%, transparent); } 100% { filter: brightness(1); box-shadow: none; } }

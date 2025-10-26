@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Discover News</title>
+		<meta name="description" content="Discover feed - mobile and desktop responsive demo" />
+		<link rel="icon" href="/favicon.ico" />
+		<link rel="manifest" href="/app.webmanifest">
+		<meta name="theme-color" content="#2563eb" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<link rel="apple-touch-icon" href="/space-shuttle.png">
+		<!-- Preconnect to critical origins -->
+		<link rel="preconnect" href="https://newui.resnet.in" crossorigin>
+		<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+		<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+		<!-- Inline critical CSS for instant render -->
+		<style>
+			/* Critical CSS for initial paint */
+			*,::before,::after{box-sizing:border-box;margin:0;padding:0}
+			html{-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+			body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;line-height:1.5;color:#111827;background:#ffffff}
+			#root{min-height:100vh}
+			/* Loading state */
+			.loading-skeleton{background:#eef2f7;border-radius:18px;height:380px;margin:16px 20px;animation:pulse 1.5s ease-in-out infinite}
+			@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+			#btnInstall{position:fixed;right:12px;bottom:12px;z-index:100;padding:10px 14px;border-radius:999px;background:#2563eb;color:#fff;border:0;box-shadow:0 4px 12px rgba(37,99,235,.35);font-weight:700;display:none}
+		</style>
+		<!-- Defer non-critical font loading -->
+		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" onload="this.onload=null;this.rel='stylesheet'" media="print">
+		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"></noscript>
+	</head>
+	<body>
+		<div id="root"></div>
+		<!-- removed install button -->
+		<script type="module" src="/src/main.jsx"></script>
+		<!-- Defer install/auth script to avoid blocking main thread -->
+		<script defer>
+		window.addEventListener('load', function() {
+			(function(){
+				let deferredPrompt = null
+				const btn = document.getElementById('btnInstall')
+				if (!btn) return
+
+				function isIOS(){ try { const ua = navigator.userAgent||''; return /iPad|iPhone|iPod/.test(ua) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1) } catch { return false } }
+				function isStandalone(){ try { return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone===true } catch { return false } }
+
+				function launchGoogleOAuth(){
+					try {
+						const params = new URLSearchParams()
+						const clientId = '293860278705-ol1bdmtlhm426caa5fr7f8b5q9uba643.apps.googleusercontent.com'
+						const redirectUri = 'https://newui.resnet.in/auth/callback'
+						const scope = 'openid email profile'
+						params.set('client_id', clientId)
+						params.set('redirect_uri', redirectUri)
+						params.set('response_type', 'code')
+						params.set('scope', scope)
+						params.set('include_granted_scopes', 'true')
+						params.set('prompt', 'select_account')
+						const url = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`
+						window.location.assign(url)
+					} catch {}
+				}
+
+				async function checkAuth(){
+					try {
+						const r = await fetch('/api/user/me', { credentials: 'same-origin', cache: 'no-store' })
+						if (r.ok) {
+							const d = await r.json().catch(()=>null)
+							if (d && d.ok && d.user && (d.user.email || d.user.name)) {
+								return true
+							}
+						}
+					} catch {}
+					return false
+				}
+
+				window.addEventListener('beforeinstallprompt', (e) => {
+					e.preventDefault()
+					deferredPrompt = e
+					// Show only for authenticated users
+					checkAuth().then((isAuthed) => {
+						if (isAuthed && !isIOS() && !isStandalone()) {
+							btn.textContent = 'Install app'
+							btn.setAttribute('aria-label','Install app')
+							btn.style.display = 'inline-block'
+						}
+					})
+				})
+
+				btn.addEventListener('click', async () => {
+					btn.disabled = true
+					try {
+						const isAuthed = await checkAuth()
+						if (!isAuthed) {
+							// Login flow
+							launchGoogleOAuth()
+							return
+						}
+						// Install flow (only if we have prompt)
+						if (!deferredPrompt) return
+						await deferredPrompt.prompt()
+						await deferredPrompt.userChoice
+						btn.style.display = 'none'
+					} finally {
+						deferredPrompt = null
+						btn.disabled = false
+					}
+				})
+
+				window.addEventListener('appinstalled', () => { btn.style.display = 'none' })
+
+				// Initial state: if not authenticated, always show Login button
+				;(async () => {
+					const isAuthed = await checkAuth()
+					if (!isAuthed) {
+						btn.textContent = 'Login with Google'
+						btn.setAttribute('aria-label','Login with Google')
+						btn.style.display = 'inline-block'
+					} else {
+						// If authenticated, only show when beforeinstallprompt fires
+						btn.style.display = 'none'
+					}
+				})()
+			})()
+		})
+		</script>
+	</body>
+</html> 

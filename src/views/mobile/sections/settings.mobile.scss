@@ -1,0 +1,122 @@
+.settings-overlay {
+	position: fixed;
+	inset: 0;
+	background: color-mix(in srgb, var(--bg) 35%, rgba(0, 0, 0, 0.45));
+	backdrop-filter: blur(18px);
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+	z-index: 200;
+	padding: 0;
+}
+
+.settings-sheet {
+	width: min(480px, 100%);
+	background: var(--card);
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	height: 100%;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	padding: calc(72px + env(safe-area-inset-top, 0)) 20px calc(32px + env(safe-area-inset-bottom, 0));
+}
+
+.settings-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 12px;
+}
+
+.settings-header h2 {
+	margin: 0;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.settings-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.settings-option {
+	width: 100%;
+	background: transparent;
+	border: 1px solid var(--border);
+	border-radius: 14px;
+	padding: 14px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	text-align: left;
+	color: inherit;
+}
+
+.settings-option:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+
+.settings-option:hover {
+	background: var(--surface-veil);
+}
+
+.option-icon {
+	width: 36px;
+	height: 36px;
+	display: grid;
+	place-items: center;
+	border-radius: 12px;
+	background: var(--chip);
+}
+
+.option-copy {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.option-title {
+	font-size: 15px;
+	font-weight: 600;
+}
+
+.option-description {
+	font-size: 13px;
+	color: var(--muted);
+}
+
+[data-theme='dark'] .settings-sheet {
+	background: rgba(15, 23, 42, 0.92);
+}
+
+[data-theme='dark'] .settings-option {
+	border-color: rgba(148, 163, 184, 0.2);
+}
+
+[data-theme='dark'] .settings-option:hover {
+	background: rgba(148, 163, 184, 0.08);
+}
+
+@media (min-width: 640px) {
+	.settings-overlay {
+		align-items: center;
+		padding: 24px;
+	}
+
+	.settings-sheet {
+		height: auto;
+		max-height: 90vh;
+		border-radius: 18px;
+		border: 1px solid var(--border);
+		box-shadow: var(--shadow);
+		padding: 24px;
+	}
+}
+

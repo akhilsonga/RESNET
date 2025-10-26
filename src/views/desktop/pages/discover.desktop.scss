@@ -1,0 +1,104 @@
+.discover-desktop {
+	padding: 24px 24px 48px 24px;
+}
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 32px 24px;
+    width: 100%;
+    max-width: min(calc(360px * 3 + 24px * 2), 100%);
+    margin: 0 auto;
+    justify-content: center;
+    justify-items: center;
+}
+
+.row-sep {
+	grid-column: 1 / -1;
+	height: 2px;
+	background: linear-gradient(
+		to right,
+		transparent,
+		color-mix(in srgb, var(--accent) 40%, var(--border)),
+		transparent
+	);
+	opacity: 1;
+	margin: 12px 0 22px 0;
+	border-radius: 2px;
+}
+
+/* Card image fixed height; content can grow to show full title */
+.discover-desktop .card { --outline: color-mix(in srgb, var(--accent) 40%, var(--border)); --outlineLite: color-mix(in srgb, var(--outline) 45%, #ffffff); overflow: hidden; border-radius: 6px; background: var(--card); border: 2px solid var(--outlineLite); display: grid; grid-template-rows: 240px 1fr; height: 520px; box-shadow: 0 0 0 rgba(0,0,0,0); transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease; }
+.discover-desktop .card { width: 100%; max-width: 420px; }
+.discover-desktop .card:hover { transform: translateY(-2px); box-shadow: 8px 8px 0 color-mix(in srgb, var(--outlineLite) 70%, transparent); border-color: color-mix(in srgb, var(--outlineLite) 70%, var(--border)); }
+.discover-desktop .card .hero { width: 100%; height: 240px; object-fit: cover; display: block; transform: scale(1.02); transition: transform .25s ease; }
+.discover-desktop .card .hero-wrap { position: relative; }
+.discover-desktop .card .age-badge {
+	position: absolute; top: 12px; left: 12px; padding: 8px 12px; font-size: 13px; font-weight: 800;
+	border-radius: 4px; background: var(--outlineLite); color: #ffffff;
+	border: 2px solid #ffffff; box-shadow: none;
+}
+[data-theme='light'] .discover-desktop .card .age-badge { background: var(--outlineLite); color: #ffffff; border-color: #ffffff; }
+.discover-desktop .card:hover .hero { transform: scale(1.06); }
+.discover-desktop .card .card-body { padding: 14px 16px 16px 16px; display: grid; grid-template-rows: auto 1fr auto; gap: 10px; min-height: 0; }
+.discover-desktop .card .card-title { margin: 0 0 6px 0; font-size: 16px; font-weight: 800; line-height: 1.25; letter-spacing: -0.2px; }
+.discover-desktop .card .description { margin: 0 0 6px 0; padding: 0 4px 0 0; font-size: 13px; line-height: 1.4; max-height: calc(1.4em * 12); overflow: hidden; overflow-y: auto; color: var(--muted); }
+.discover-desktop .card .card-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 12px; border-top: 2px solid var(--outlineLite); font-size: 13px; font-weight: 700; }
+.discover-desktop .card .favicons-row { display: inline-flex; align-items: center; gap: 2px; flex: 1 1 auto; min-width: 0; overflow: hidden; }
+.discover-desktop .card .favicon { width: 20px; height: 20px; border-radius: 999px; border: 2px solid #000000; background: var(--card); box-shadow: none; }
+.discover-desktop .card .sources-label { display: none; }
+
+/* Size variants */
+.discover-desktop .card.size-low { grid-template-rows: 170px 1fr; height: 360px; }
+.discover-desktop .card.size-low .hero { height: 170px; }
+
+.discover-desktop .card.size-medium { grid-template-rows: 200px 1fr; height: 420px; }
+.discover-desktop .card.size-medium .hero { height: 200px; }
+
+.discover-desktop .card.size-high { grid-template-rows: 300px 1fr; height: 640px; }
+.discover-desktop .card.size-high .hero { height: 300px; }
+
+.discover-desktop .card.size-low .card-title,
+.discover-desktop .card.size-medium .card-title { font-size: 15px; }
+
+.discover-desktop .card.size-high .card-title { font-size: 18px; }
+
+.discover-desktop .card.size-low .description,
+.discover-desktop .card.size-medium .description { font-size: 12px; line-height: 1.4; max-height: calc(1.4em * 10); }
+
+.discover-desktop .card.size-high .description { font-size: 14px; line-height: 1.55; max-height: calc(1.55em * 14); }
+
+/* Subtle scrollbar styling */
+.discover-desktop .card .description::-webkit-scrollbar { width: 6px; }
+.discover-desktop .card .description::-webkit-scrollbar-thumb { background: var(--outlineLite); border-radius: 2px; }
+.discover-desktop .card .description::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 2px; }
+
+/* Optional wider breakpoint tweak */
+/* Keep a maximum of 3 columns; drop to 2/1 on narrower widths */
+@media (max-width: 1200px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+}
+
+@media (max-width: 880px) {
+    .grid {
+        grid-template-columns: minmax(300px, 1fr);
+        justify-content: center;
+    }
+}
+
+@media (max-width: 760px) {
+    .discover-desktop { padding: 16px 12px 32px 12px; }
+    .grid { gap: 28px 16px; }
+}
+
+/* All cards same size - no variants */
+
+/* Polished chip-style actions */
+.discover-desktop .card .actions { display: flex; align-items: stretch; gap: 0; margin-left: auto; width: auto; max-width: 200px; flex-shrink: 0; border: 2px solid var(--outlineLite); border-radius: 4px; overflow: hidden; background: #ffffff; }
+.discover-desktop .card .actions .seg { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 12px; border: 0; background: transparent; color: inherit; font-weight: 800; font-size: 12px; cursor: pointer; transition: background .15s ease, color .15s ease; }
+.discover-desktop .card .actions .seg:hover { background: var(--outlineLite); color: #ffffff; }
+.discover-desktop .card .actions .seg:disabled { opacity: .7; cursor: default; }
+.discover-desktop .card .actions .seg-sep { width: 2px; align-self: stretch; background: linear-gradient(to bottom, transparent, var(--outlineLite), transparent); }

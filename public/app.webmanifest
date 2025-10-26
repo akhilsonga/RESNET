@@ -1,0 +1,15 @@
+{
+  "id": "/",
+  "name": "resnet News",
+  "short_name": "resnet",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#2563eb",
+  "icons": [
+    { "src": "/space-shuttle.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/space-shuttle.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/space-shuttle.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+} 
