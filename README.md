@@ -1,27 +1,53 @@
-# Discover News (React + Vite)
+## RESNET — New UI
 
-A cleanly structured React app with separate mobile and desktop views. Mobile UI mirrors the provided screenshot (header, category chips, and article cards).
+Modern React + Vite interface for discovering and reading news with dedicated desktop and mobile experiences.
 
-## Scripts
+### Access the app
+- Live: [newui.resnet.in](https://newui.resnet.in)
 
-- `npm run dev` - start dev server
-- `npm run build` - production build to `dist/`
-- `npm run preview` - preview the built app
+### UI gallery
 
-## Structure
+Desktop home
 
-- `src/root/App.jsx` - routes to mobile/desktop via `useResponsive`
-- `src/views/mobile` - mobile screens and sections
-- `src/views/desktop` - desktop screens and sections
-- `src/shared` - shared hooks/utilities
-- `src/__mocks__` - mock data
-- `src/styles` - global styles and tokens
+<img src="public/ui-images/image.png" alt="Desktop Home" width="1024" />
 
-## Deploy
+Mobile home
 
-- Static hosting: upload `dist/` to Netlify, Vercel, GitHub Pages, S3, etc.
-- SPA routing: no extra config needed for this demo.
+<img src="public/ui-images/image%20copy.png" alt="Mobile Home" width="380" />
 
-## Customize breakpoints
+Search — keyword and results
 
-Edit `MOBILE_MAX_WIDTH` in `src/shared/hooks/useResponsive.js`. 
+<img src="public/ui-images/image%20copy%202.png" alt="Search results UI" width="380" />
+
+Article details (mobile) — Summary, Options (comments), Chains (company‑only news)
+
+<img src="public/ui-images/image%20copy%203.png" alt="Mobile Article Details with tabs" width="380" />
+
+Chains view
+
+<img src="public/ui-images/image%20copy%204.png" alt="Chains UI" width="1024" />
+
+Settings
+
+<img src="public/ui-images/image%20copy%205.png" alt="Settings page" width="380" />
+
+Mobile — dark mode
+
+<img src="public/ui-images/image%20copy%206.png" alt="Mobile dark mode" width="380" />
+
+### Tech stack
+- **React + Vite** for fast dev/build
+- **Responsive layouts** with separate mobile/desktop views
+
+### Scripts
+- `npm run dev` — start dev server
+- `npm run build` — production build in `dist/`
+- `npm run preview` — preview the built app
+
+### Project structure
+- `src/root/App.jsx` — routes to mobile/desktop via `useResponsive`
+- `src/views/mobile` — mobile screens and sections
+- `src/views/desktop` — desktop screens and sections
+- `src/shared` — shared components, hooks and utilities
+- `src/styles` — global styles and tokens
+- `public/ui-images` — UI screenshots shown above
