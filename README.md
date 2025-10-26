@@ -3,37 +3,57 @@
 Modern React + Vite interface for discovering and reading news with dedicated desktop and mobile experiences.
 
 ### Access the app
-- Live: [newui.resnet.in](https://newui.resnet.in)
+
+<p align="center">
+  <a href="https://newui.resnet.in">
+    <img alt="Live: newui.resnet.in" src="https://img.shields.io/badge/Live-newui.resnet.in-2ea44f?style=for-the-badge" />
+  </a>
+  <br/>
+  <sub>Click the badge to open the app</sub>
+  <br/><br/>
+</p>
 
 ### UI gallery
 
-Desktop home
+<p align="center">
+  <b>Desktop — Home</b><br/>
+  <img src="public/ui-images/image.png" alt="Desktop Home" width="1200" />
+</p>
 
-<img src="public/ui-images/image.png" alt="Desktop Home" width="1024" />
-
-Mobile home
-
-<img src="public/ui-images/image%20copy.png" alt="Mobile Home" width="380" />
-
-Search — keyword and results
-
-<img src="public/ui-images/image%20copy%202.png" alt="Search results UI" width="380" />
-
-Article details (mobile) — Summary, Options (comments), Chains (company‑only news)
-
-<img src="public/ui-images/image%20copy%203.png" alt="Mobile Article Details with tabs" width="380" />
-
-Chains view
-
-<img src="public/ui-images/image%20copy%204.png" alt="Chains UI" width="1024" />
-
-Settings
-
-<img src="public/ui-images/image%20copy%205.png" alt="Settings page" width="380" />
-
-Mobile — dark mode
-
-<img src="public/ui-images/image%20copy%206.png" alt="Mobile dark mode" width="380" />
+<table>
+  <tr>
+    <td align="center">
+      <b>Mobile — Home</b><br/>
+      <img src="public/ui-images/image%20copy.png" alt="Mobile Home" width="360" />
+    </td>
+    <td align="center">
+      <b>Mobile — Search</b><br/>
+      <img src="public/ui-images/image%20copy%202.png" alt="Search results UI" width="360" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <b>Mobile — Article details</b><br/>
+      <sub>Tabs: Summary, Options (comments), Chains (company‑only news)</sub><br/>
+      <img src="public/ui-images/image%20copy%203.png" alt="Mobile Article Details with tabs" width="360" />
+    </td>
+    <td align="center">
+      <b>Mobile — Settings</b><br/>
+      <img src="public/ui-images/image%20copy%205.png" alt="Settings page" width="360" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <b>Mobile — Dark mode</b><br/>
+      <img src="public/ui-images/image%20copy%206.png" alt="Mobile dark mode" width="360" />
+    </td>
+    <td align="center">
+      <b>Chains view</b><br/>
+      <img src="public/ui-images/image%20copy%204.png" alt="Chains UI" width="360" />
+    </td>
+  </tr>
+  
+</table>
 
 ### Tech stack
 - **React + Vite** for fast dev/build
