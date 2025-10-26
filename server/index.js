@@ -42,9 +42,9 @@ if (!VAPID_PUBLIC_KEY || !VAPID_PRIVATE_KEY) {
 		const keys = webpush.generateVAPIDKeys()
 		VAPID_PUBLIC_KEY = keys.publicKey
 		VAPID_PRIVATE_KEY = keys.privateKey
-		console.log('\n[web-push] Generated ephemeral VAPID keys for this run:')
-		console.log('PUBLIC_KEY=', VAPID_PUBLIC_KEY)
-		console.log('PRIVATE_KEY=', VAPID_PRIVATE_KEY)
+    	console.log('\n[web-push] Generated ephemeral VAPID keys for this run:')
+    	console.log('PUBLIC_KEY=', VAPID_PUBLIC_KEY)
+    	// Do not print private keys to logs
 	} catch (e) {
 		console.warn('Failed to generate VAPID keys', e)
 	}
